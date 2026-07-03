@@ -1,0 +1,28 @@
+{
+	"paths":
+	{
+		"data": "data/data.csv",
+		"theta": "data/theta.csv",
+		"predictions": "data/predictions.csv"
+	},
+
+	"training": 
+	{
+		"learning_rate": 0.1,
+		"iterations": 1000
+	},
+
+	"plot":
+	{
+		"point_color": "blue",
+		"point_marker": "o",
+		"show_points": true,
+		
+		"line_color": "red",
+		"show_line": true,
+
+		"show_predictions": true,
+		"prediction_color": "green",
+		"prediction_marker": "x"
+	}
+}
