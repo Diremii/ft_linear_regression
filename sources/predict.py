@@ -6,14 +6,15 @@
 #    By: humontas@student.42.fr <humontas>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/06/20 18:22:24 by humontas@st       #+#    #+#              #
-#    Updated: 2026/07/03 17:06:43 by humontas@st      ###   ########.fr        #
+#    Updated: 2026/07/03 22:34:40 by humontas@st      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 import os
+
+from utils.config import PREDICTIONS, THETA
 from utils.io import load_theta, save_prediction
 from utils.model import estimate_price
-from utils.config import THETA, PREDICTIONS
 
 
 def	main():

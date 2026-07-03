@@ -9,7 +9,8 @@
 	"training": 
 	{
 		"learning_rate": 0.1,
-		"iterations": 1000
+		"iterations": 1000,
+		"verbose": false
 	},
 
 	"plot":

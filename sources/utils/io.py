@@ -6,11 +6,12 @@
 #    By: humontas@student.42.fr <humontas>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/06/20 12:10:48 by humontas@st       #+#    #+#              #
-#    Updated: 2026/07/03 16:48:49 by humontas@st      ###   ########.fr        #
+#    Updated: 2026/07/03 22:35:40 by humontas@st      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 import os
+
 import pandas as pd
 
 
@@ -32,7 +33,7 @@ def	load_theta(path: str) -> tuple:
 	theta1 = data['theta1'].iloc[0]
 	return theta0, theta1
 
-def save_prediction(km: float, price: float, path: str):
+def	save_prediction(km: float, price: float, path: str):
 	file_exists = os.path.exists(path)
 	df = pd.DataFrame({'km': [km], 'price': [price]})
 	df.to_csv(path, mode='a', header=not file_exists, index=False)

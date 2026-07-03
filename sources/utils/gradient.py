@@ -6,12 +6,14 @@
 #    By: humontas@student.42.fr <humontas>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/06/20 15:02:08 by humontas@st       #+#    #+#              #
-#    Updated: 2026/06/20 15:45:05 by humontas@st      ###   ########.fr        #
+#    Updated: 2026/07/03 22:35:22 by humontas@st      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 import pandas as pd
+
 from utils.model import estimate_price
+from utils.config import VERBOSE
 
 
 def	gradient_descent(km_norm: pd.Series, price_norm: pd.Series, learning_rate: float, iterations: int) -> tuple:
@@ -30,7 +32,7 @@ def	gradient_descent(km_norm: pd.Series, price_norm: pd.Series, learning_rate: f
 		theta0 = theta0 - theta0_tmp
 		theta1 = theta1 - theta1_tmp
 
-		if i % 100 == 0:
+		if VERBOSE and i % 100 == 0:
 			print(i, errors.abs().mean())
 
 	return theta0, theta1

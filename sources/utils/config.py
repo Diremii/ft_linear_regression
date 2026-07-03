@@ -6,7 +6,7 @@
 #    By: humontas@student.42.fr <humontas>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/03 15:16:25 by humontas@st       #+#    #+#              #
-#    Updated: 2026/07/03 21:52:50 by humontas@st      ###   ########.fr        #
+#    Updated: 2026/07/03 22:17:58 by humontas@st      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ PREDICTIONS = _config["paths"]["predictions"]
 
 LEARNING_RATE = _config["training"]["learning_rate"]
 ITERATIONS = _config["training"]["iterations"]
+VERBOSE = _config["training"]["verbose"]
 
 POINT_COLOR = _config["plot"]["point_color"]
 POINT_MARKER = _config["plot"]["point_marker"]
