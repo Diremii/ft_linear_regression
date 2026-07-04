@@ -6,17 +6,14 @@
 #    By: humontas@student.42.fr <humontas>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/06/20 13:01:27 by humontas@st       #+#    #+#              #
-#    Updated: 2026/07/04 12:10:55 by humontas@st      ###   ########.fr        #
+#    Updated: 2026/07/04 14:58:00 by humontas@st      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 import matplotlib
 matplotlib.use("TkAgg")
 
-import os
-
 import matplotlib.pyplot as plt
-import pandas as pd
 from utils.config import (
 	LINE_COLOR, POINT_COLOR, POINT_MARKER, PREDICTION_COLOR,
 	PREDICTION_MARKER, SHOW_LINE, SHOW_POINTS, SHOW_PREDICTIONS,
