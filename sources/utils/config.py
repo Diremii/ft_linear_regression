@@ -6,7 +6,7 @@
 #    By: humontas@student.42.fr <humontas>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/03 15:16:25 by humontas@st       #+#    #+#              #
-#    Updated: 2026/07/03 22:17:58 by humontas@st      ###   ########.fr        #
+#    Updated: 2026/07/04 11:25:10 by humontas@st      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,9 +18,9 @@ _root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__
 with open(os.path.join(_root, "config.json")) as file:
 	_config = json.load(file)
 
-DATA = _config["paths"]["data"]
-THETA = _config["paths"]["theta"]
-PREDICTIONS = _config["paths"]["predictions"]
+DATA = os.path.join(_root, _config["paths"]["data"])
+THETA = os.path.join(_root, _config["paths"]["theta"])
+PREDICTIONS = os.path.join(_root, _config["paths"]["predictions"])
 
 LEARNING_RATE = _config["training"]["learning_rate"]
 ITERATIONS = _config["training"]["iterations"]

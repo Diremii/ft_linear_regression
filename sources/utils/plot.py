@@ -6,7 +6,7 @@
 #    By: humontas@student.42.fr <humontas>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/06/20 13:01:27 by humontas@st       #+#    #+#              #
-#    Updated: 2026/07/04 00:18:08 by humontas@st      ###   ########.fr        #
+#    Updated: 2026/07/04 12:10:55 by humontas@st      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ from utils.config import (
 	PREDICTION_MARKER, SHOW_LINE, SHOW_POINTS, SHOW_PREDICTIONS,
 )
 from utils.model import estimate_price
+from utils.io import load_predictions
 
 
 def	plot_data(km, price):
@@ -40,7 +41,7 @@ def	plot_regression_line(theta0: float, theta1: float, mileage_bounds: tuple):
 		plt.plot([mileage_min, mileage_max], [price_min_pred, price_max_pred], color=LINE_COLOR)
 
 def	plot_predictions(path):
-	if not SHOW_PREDICTIONS or not os.path.exists(path):
+	if not SHOW_PREDICTIONS:
 		return
-	data = pd.read_csv(path)
+	data = load_predictions(path)
 	plt.scatter(data['km'], data['price'], color=PREDICTION_COLOR, marker=PREDICTION_MARKER)

@@ -6,7 +6,7 @@
 #    By: humontas@student.42.fr <humontas>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/06/20 12:10:48 by humontas@st       #+#    #+#              #
-#    Updated: 2026/07/03 22:35:40 by humontas@st      ###   ########.fr        #
+#    Updated: 2026/07/04 12:09:29 by humontas@st      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,3 +37,11 @@ def	save_prediction(km: float, price: float, path: str):
 	file_exists = os.path.exists(path)
 	df = pd.DataFrame({'km': [km], 'price': [price]})
 	df.to_csv(path, mode='a', header=not file_exists, index=False)
+
+def	load_predictions(path: str) -> pd.DataFrame:
+	if not os.path.exists(path):
+		return pd.DataFrame(columns=['km', 'price'])
+	data = pd.read_csv(path)
+	if 'km' not in data.columns or 'price' not in data.columns:
+		raise ValueError("The CSV file must contain 'km' and 'price' columns.")
+	return data

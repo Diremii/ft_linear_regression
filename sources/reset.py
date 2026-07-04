@@ -1,30 +1,26 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    predict.py                                         :+:      :+:    :+:    #
+#    reset.py                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: humontas@student.42.fr <humontas>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/06/20 18:22:24 by humontas@st       #+#    #+#              #
-#    Updated: 2026/07/04 10:14:34 by humontas@st      ###   ########.fr        #
+#    Created: 2026/07/04 09:46:51 by humontas@st       #+#    #+#              #
+#    Updated: 2026/07/04 10:59:20 by humontas@st      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-from utils.config import PREDICTIONS, THETA
-from utils.predictor import predict
 
+from utils.config import THETA, PREDICTIONS
+from utils.reset import reset_files
 
 def	main():
-	mileage_str = input("Enter the mileage: ")
-	try:
-		mileage = float(mileage_str)
-	except ValueError:
-		print("Error: put a valid value.")
-		return
-	price, theta0, theta1 = predict(mileage, THETA, PREDICTIONS)
-	if theta0 == 0 and theta1 == 0:
-		print("Warning: model not trained yet, prediction will be 0.")
-	print(f"Estimated price: {price:.2f}")
+	confirmation_str = input("Are you sure? This will delete your trained model and prediction history. [y/n]: ")
+	if confirmation_str.lower() in ("y", "yes"):
+		reset_files(THETA, PREDICTIONS)
+		print("Reset complete.")
+	else:
+		print("Reset cancelled.")
 
 if __name__ == "__main__":
 	main()

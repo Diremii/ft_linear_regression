@@ -1,0 +1,5 @@
+data/theta.csv
+data/predictions.csv
+ 
+__pycache__/
+*.pyc
