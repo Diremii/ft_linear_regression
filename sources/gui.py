@@ -6,15 +6,19 @@
 #    By: humontas@student.42.fr <humontas>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/03 22:40:21 by humontas@st       #+#    #+#              #
-#    Updated: 2026/07/04 12:21:41 by humontas@st      ###   ########.fr        #
+#    Updated: 2026/07/04 14:51:36 by humontas@st      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+import os
+import subprocess
+import platform
 
 import customtkinter as ctk
 from tkinter import messagebox
 
 from train import main as train
-from utils.config import THETA, PREDICTIONS
+from utils.config import THETA, PREDICTIONS, CONFIG
 from utils.predictor import predict
 from utils.reset import reset_files
 from utils.io import load_predictions
@@ -52,10 +56,25 @@ def	build_result_section(app):
 def	build_buttons_section(app, on_train, on_reset):
 	bottom_frame = ctk.CTkFrame(app, fg_color="transparent")
 	bottom_frame.pack(fill="x", padx=20, pady=(0, 20))
-	train_button = ctk.CTkButton(bottom_frame, text="Train/Show Graph", command=on_train, fg_color="gray20", height=36)
+	train_button = ctk.CTkButton(bottom_frame, text="Train/Show Graph", command=on_train, height=36)
 	train_button.pack(side="left", expand=True, fill="x", padx=(0, 5))
 	reset_button = ctk.CTkButton(bottom_frame, text="Reset", command=on_reset, fg_color="darkred", height=36)
 	reset_button.pack(side="left", expand=True, fill="x", padx=(5, 0))
+
+	file_frame = ctk.CTkFrame(app, fg_color="transparent")
+	file_frame.pack(fill="x", padx=20, pady=(0, 20))
+	def	open_file(path):
+		system = platform.system()
+		if system == "Windows":
+			os.startfile(path)
+		elif system == "Darwin":
+			subprocess.run(["open", path])
+		else:
+			subprocess.run(["xdg-open", path])
+	config_button = ctk.CTkButton(file_frame, text="Config file", command=lambda: open_file(CONFIG), fg_color="gray20", height=36)
+	config_button.pack(side="left", expand=True, fill="x", padx=(0, 5))
+	predictions_button = ctk.CTkButton(file_frame, text="Prediction file", command=lambda: open_file(PREDICTIONS), fg_color="gray20", height=36)
+	predictions_button.pack(side="left", expand=True, fill="x", padx=(5, 0))
 
 
 # -------------------------------------------#
@@ -63,7 +82,7 @@ def	build_buttons_section(app, on_train, on_reset):
 # -------------------------------------------#
 
 def	build_history_section(app):
-	title = ctk.CTkLabel(app, text="Prediction history", anchor="w", font=ctk.CTkFont(weight="bold"))
+	title = ctk.CTkLabel(app, text="Prediction history", anchor="center", font=ctk.CTkFont(weight="bold"))
 	title.pack(fill="x", padx=15, pady=(15, 5))
 	scroll_frame = ctk.CTkScrollableFrame(app, fg_color="transparent")
 	scroll_frame.pack(fill="both", expand=True, padx=10, pady=(0, 15))
@@ -71,7 +90,7 @@ def	build_history_section(app):
 		for widget in scroll_frame.winfo_children():
 			widget.destroy()
 		data = load_predictions(PREDICTIONS)
-		for _, row in data.iterrows():
+		for _, row in data[::-1].iterrows():
 			text = f"{row['km']:.0f} km -> {row['price']:.2f}"
 			ctk.CTkLabel(scroll_frame, text=text, anchor="w").pack(fill="x", padx=5, pady=2)
 	return refresh
@@ -84,7 +103,7 @@ def	build_history_section(app):
 def	main():
 	app = ctk.CTk()
 	app.title("ft_linear_regression")
-	app.geometry("550x300")
+	app.geometry("550x360")
 	app.resizable(False, False)
 
 	left_frame = ctk.CTkFrame(app, fg_color="transparent")
