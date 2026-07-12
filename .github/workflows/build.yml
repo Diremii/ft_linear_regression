@@ -26,10 +26,36 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt pyinstaller
 
-      - name: Build executable
-        run: python -m PyInstaller --onefile --hidden-import PIL._tkinter_finder sources/gui.py
+      - name: Build executable (Linux/macOS)
+        if: runner.os != 'Windows'
+        run: python -m PyInstaller --onefile --noconsole --hidden-import PIL._tkinter_finder sources/gui.py
+
+      - name: Build executable (Windows)
+        if: runner.os == 'Windows'
+        run: python -m PyInstaller --onefile --noconsole --hidden-import PIL._tkinter_finder sources/gui.py
+
+      - name: Create zip (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          cp config.json dist/
+          cp -r data/ dist/
+          cd dist && zip -r ../ft_linear_regression_linux.zip .
+
+      - name: Create zip (Windows)
+        if: runner.os == 'Windows'
+        run: |
+          copy config.json dist\
+          xcopy data dist\data\ /E /I
+          cd dist && tar -acf ..\ft_linear_regression_windows.zip *
+
+      - name: Create zip (macOS)
+        if: runner.os == 'macOS'
+        run: |
+          cp config.json dist/
+          cp -r data/ dist/
+          cd dist && zip -r ../ft_linear_regression_macos.zip .
 
       - name: Upload release asset
         uses: softprops/action-gh-release@v2
         with:
-          files: dist/*
+          files: ft_linear_regression_*.zip
