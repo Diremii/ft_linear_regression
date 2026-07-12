@@ -2,6 +2,8 @@
 
 # ft_linear_regression — Car Price Prediction
 
+![Python](https://img.shields.io/badge/python-3.11-blue)
+
 A Python application that predicts car prices based on mileage using a linear regression model.
 
 The project provides both a command-line interface and a graphical interface to train the model, make predictions, and evaluate its accuracy.
@@ -25,6 +27,12 @@ Install the required dependencies:
 ```bash
 pip install -r requirements.txt
 ```
+
+## Dataset
+
+The project uses a CSV file with two columns: `km` and `price`.
+A sample dataset is included in `data/data.csv`.
+You can replace it with your own data as long as the format is respected.
 
 ## Usage
 
@@ -83,7 +91,7 @@ The GUI allows you to:
 
 All training and visualization parameters are configurable via `config.json`.
 
-| Parameter          | Description                             | Example |
+| Parameter          | Description                             | Default |
 | ------------------ | --------------------------------------- | ------- |
 | `learning_rate`    | Controls the size of each training step | `0.1`   |
 | `iterations`       | Number of training iterations           | `10000` |
