@@ -20,6 +20,12 @@ ft_linear_regression implements a complete prediction workflow:
 
 The graphical interface provides an easier way to interact with the model without using the command line.
 
+## Quick start
+
+Download the latest release for your platform and run the executable directly — no installation required.
+
+[Download latest release](https://github.com/Diremii/ft_linear_regression/releases/latest)
+
 ## Installation
 
 Install the required dependencies:
