@@ -6,15 +6,19 @@
 #    By: humontas@student.42.fr <humontas>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/03 15:16:25 by humontas@st       #+#    #+#              #
-#    Updated: 2026/07/04 14:51:05 by humontas@st      ###   ########.fr        #
+#    Updated: 2026/07/12 21:00:11 by humontas@st      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 import json
+import sys
 import os
 
 
-_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+if getattr(sys, 'frozen', False):
+	_root = os.path.dirname(sys.executable)
+else:
+	_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 with open(os.path.join(_root, "config.json")) as file:
 	_config = json.load(file)
 

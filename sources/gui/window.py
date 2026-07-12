@@ -6,7 +6,7 @@
 #    By: humontas@student.42.fr <humontas>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/10 16:34:52 by humontas@st       #+#    #+#              #
-#    Updated: 2026/07/10 16:41:01 by humontas@st      ###   ########.fr        #
+#    Updated: 2026/07/12 21:09:51 by humontas@st      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,7 +61,7 @@ def	main():
 
 	build_buttons_section(
 		left_frame,
-		lambda: on_train(lambda: update_r2(r2_label)),
+		lambda: on_train(set_warning, lambda: update_r2(r2_label)),
 		lambda: on_reset(
 			set_warning,
 			success_label,
