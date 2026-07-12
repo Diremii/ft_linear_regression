@@ -94,7 +94,7 @@ All training and visualization parameters are configurable via `config.json`.
 | Parameter          | Description                             | Default |
 | ------------------ | --------------------------------------- | ------- |
 | `learning_rate`    | Controls the size of each training step | `0.1`   |
-| `iterations`       | Number of training iterations           | `10000` |
+| `iterations`       | Number of training iterations           | `1000`  |
 | `verbose`          | Display training progress               | `false` |
 | `show_line`        | Display regression line                 | `true`  |
 | `show_predictions` | Display prediction history on graph     | `true`  |
